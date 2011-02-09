@@ -1,0 +1,18 @@
+ 
+<%= @user.login%>
+
+  <div id="users">  
+     <% @users.each do |user| %>  
+  <div id="user">  
+        <% if user.login != current_user.login %>  
+           <%=h user.username %>  
+          <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>  
+        <% end %>  
+      </div>  
+   
+    <% end %>  
+  </div>
+
+<%= link_to "Make Friends",{:controller => "users", :action => "show", :id => current_user}  %>  
+  
+ <%= link_to "My Friends", { :controller => "users", :action => "show", :id => current_user } %>
